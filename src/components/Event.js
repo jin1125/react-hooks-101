@@ -1,11 +1,13 @@
 import React from "react";
 
+import {DELEATE_EVENT} from '../actions/index.js';
+
 const Event = ({dispatch, event }) => {
   const id = event.id;
   const handleClickDeleteButton = () => {
     const result = window.confirm(`イベント(id = ${id})を本当に削除しても良いですか？`);
     if(result){
-      dispatch({ type: "DELEATE_EVENT", id: id });
+      dispatch({ type: DELEATE_EVENT, id: id });
     }
   };
 
