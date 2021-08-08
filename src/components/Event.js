@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {DELEATE_EVENT} from '../actions/index.js';
+import AppContext from "../contexts/AppContext.js";
 
-const Event = ({dispatch, event }) => {
+const Event = ({event }) => {
+  const {dispatch} = useContext(AppContext);
   const id = event.id;
   const handleClickDeleteButton = () => {
     const result = window.confirm(`イベント(id = ${id})を本当に削除しても良いですか？`);
