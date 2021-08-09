@@ -1,15 +1,23 @@
 import React, { useContext } from "react";
-
-import {DELEATE_EVENT} from '../actions/index.js';
+import { ADD_OPERATION_LOG, DELEATE_EVENT } from "../actions/index.js";
 import AppContext from "../contexts/AppContext.js";
+import { timeCurrentIso8601 } from "../utils";
 
-const Event = ({event}) => {
-  const {dispatch} = useContext(AppContext);
+const Event = ({ event }) => {
+  const { dispatch } = useContext(AppContext);
   const id = event.id;
   const handleClickDeleteButton = () => {
-    const result = window.confirm(`イベント(id = ${id})を本当に削除しても良いですか？`);
-    if(result){
+    const result = window.confirm(
+      `イベント(id = ${id})を本当に削除しても良いですか？`
+    );
+    if (result) {
       dispatch({ type: DELEATE_EVENT, id: id });
+
+      dispatch({
+        type: ADD_OPERATION_LOG,
+        description: `イベント(id = ${id})を削除しました。`,
+        operatedAt: timeCurrentIso8601(),
+      });
     }
   };
 
