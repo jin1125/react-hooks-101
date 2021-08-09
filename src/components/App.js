@@ -9,7 +9,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, []);
 
   return (
-    <AppContext.Provider value={{state,dispatch}}>
+    <AppContext.Provider value={{ state, dispatch }}>
       <div className="container-fluid">
         <EventForm />
         <Events />
