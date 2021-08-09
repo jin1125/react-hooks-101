@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import {DELEATE_EVENT} from '../actions/index.js';
 import AppContext from "../contexts/AppContext.js";
 
-const Event = ({event }) => {
+const Event = ({event}) => {
   const {dispatch} = useContext(AppContext);
   const id = event.id;
   const handleClickDeleteButton = () => {
